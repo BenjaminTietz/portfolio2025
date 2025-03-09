@@ -9,7 +9,11 @@ import { ThemeService } from "../../../services/theme.service";
         >🌙</span
       >
       <div class="slideway">
-        <div class="slider" [class.active]="!themeService.isDarkMode()"></div>
+        <div
+          (click)="toggleTheme()"
+          class="slider"
+          [class.active]="!themeService.isDarkMode()"
+        ></div>
       </div>
       <span (click)="toggleTheme()" [class.active]="!themeService.isDarkMode()"
         >🌞</span
@@ -22,16 +26,27 @@ import { ThemeService } from "../../../services/theme.service";
         display: flex;
         align-items: center;
         gap: 5px;
-        cursor: pointer;
       }
 
       .theme-switch span {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 16px;
         font-weight: bold;
         color: var(--text-color);
         cursor: pointer;
         padding: 0 5px;
         user-select: none;
+        border: solid 1px transparent;
+        border-radius: 50%;
+        transition: all 0.175s ease-in-out;
+        &:hover {
+          border: solid 1px var(--secondary-color);
+          border-radius: 50%;
+        }
       }
 
       .slideway {
@@ -53,6 +68,7 @@ import { ThemeService } from "../../../services/theme.service";
         top: -5px;
         right: -5px;
         transition: transform 0.3s ease-in-out;
+        cursor: pointer;
       }
 
       .slider.active {

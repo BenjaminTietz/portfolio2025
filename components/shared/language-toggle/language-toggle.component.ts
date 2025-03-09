@@ -10,7 +10,11 @@ import { Component } from "@angular/core";
         >EN</span
       >
       <div class="slideway">
-        <div class="slider" [class.active]="currentLanguage === 'de'"></div>
+        <div
+          class="slider"
+          (click)="toggleLanguage()"
+          [class.active]="currentLanguage === 'de'"
+        ></div>
       </div>
       <span
         (click)="setLanguage('de')"
@@ -21,20 +25,38 @@ import { Component } from "@angular/core";
   `,
   styles: [
     `
+      @use "../../../styles/mixins" as mixins;
+      @use "../../../styles/themes" as colors;
+
       .language-switch {
         display: flex;
         align-items: center;
         gap: 5px;
-        cursor: pointer;
       }
 
       .language-switch span {
-        font-size: 16px;
-        font-weight: bold;
-        color: var(--text-color);
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include mixins.font-style(
+          "Josefin Sans",
+          700,
+          16px,
+          1.3,
+          var(--text-color)
+        );
         cursor: pointer;
         padding: 0 5px;
         user-select: none;
+        border: solid 1px transparent;
+        border-radius: 50%;
+        transition: all 0.175s ease-in-out;
+        &:hover {
+          border: solid 1px var(--secondary-color);
+          border-radius: 50%;
+        }
       }
 
       .slideway {
@@ -56,6 +78,7 @@ import { Component } from "@angular/core";
         top: -5px;
         right: -5px;
         transition: transform 0.3s ease-in-out;
+        cursor: pointer;
       }
 
       .slider.active {
@@ -69,5 +92,9 @@ export class LanguageSwitchComponent {
 
   setLanguage(lang: string) {
     this.currentLanguage = lang;
+  }
+
+  toggleLanguage() {
+    this.currentLanguage = this.currentLanguage === "en" ? "de" : "en";
   }
 }

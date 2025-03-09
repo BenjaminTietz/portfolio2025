@@ -8,29 +8,34 @@ export class ThemeService {
 
   constructor() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      this.enableDarkMode();
+    this.darkModeEnabled = savedTheme === 'dark';
+    this.applyTheme();
+  }
+
+  private applyTheme() {
+    if (this.darkModeEnabled) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
     }
   }
 
   enableDarkMode() {
-    document.body.classList.add('dark-mode');
-    localStorage.setItem('theme', 'dark');
     this.darkModeEnabled = true;
+    localStorage.setItem('theme', 'dark');
+    this.applyTheme();
   }
 
   disableDarkMode() {
-    document.body.classList.remove('dark-mode');
-    localStorage.setItem('theme', 'light');
     this.darkModeEnabled = false;
+    localStorage.setItem('theme', 'light');
+    this.applyTheme();
   }
 
   toggleTheme() {
-    if (this.darkModeEnabled) {
-      this.disableDarkMode();
-    } else {
-      this.enableDarkMode();
-    }
+    this.darkModeEnabled = !this.darkModeEnabled;
+    localStorage.setItem('theme', this.darkModeEnabled ? 'dark' : 'light');
+    this.applyTheme();
   }
 
   isDarkMode(): boolean {

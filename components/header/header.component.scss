@@ -1,0 +1,85 @@
+@use '../../styles/mixins.scss' as mixins;
+
+
+.wrapper {
+    @include mixins.dFlex(row, space-between, center);
+    overflow: hidden;
+}
+
+
+.nav-links {
+    @include mixins.dFlex(row, center, center);
+    gap: 24px;
+
+    a {
+        @include mixins.font-style("Josefin Sans", 700, 24px, 1.3, black);
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: bold;
+        transition: 0.175s ease-in-out;
+
+        &:hover {
+            color: var(--secondary-color);
+        }
+    }
+}
+
+.burger-menu {
+    @include mixins.dFlex(column, center, center);
+    gap: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative;
+    display: none;
+
+    span {
+        width: 100%;
+        height: 3px;
+        background: var(--text-color);
+        transition: 0.3s ease-in-out;
+    }
+
+    &.active {
+        span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        width: 100svw;
+        height: calc(100svh - 150px);
+        top: 100px;
+        right: 0;
+        background: var(--background-color);
+        opacity: 0.9;
+        flex-direction: column;
+        padding: 16px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .switch-container {}
+}

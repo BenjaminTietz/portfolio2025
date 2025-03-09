@@ -1,6 +1,20 @@
-<header class="component-container">
+<header class="component-container wrapper">
     <app-logo [width]="80" [height]="80"></app-logo>
+    <nav>
+        <div class="burger-menu" [class.active]="menuOpen" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" [class.active]="menuOpen">
+            <a routerLink="/about" (click)="closeMenu()">About Me</a>
+            <a routerLink="/skills" (click)="closeMenu()">Skillset</a>
+            <a routerLink="/portfolio" (click)="closeMenu()">Portfolio</a>
 
-    <app-theme-toggle></app-theme-toggle>
-
+            <div class="switch-container">
+                <app-language-switch></app-language-switch>
+                <app-theme-toggle></app-theme-toggle>
+            </div>
+        </ul>
+    </nav>
 </header>

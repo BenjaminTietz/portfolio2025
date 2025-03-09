@@ -1,21 +1,38 @@
-// Light Mode
+// Light Mode Farben
+$background-color-light: #F1F0E9;
+$text-color-light: #9AA6B2;
+$text-color-dark-light: #BCCCDC;
+$primary-color-light: #D9EAFD;
+$secondary-color-light: #4589FF;
+
+// Dark Mode Farben
+$background-color-dark: #213555;
+$text-color-dark: #F5EFE7;
+$text-color-dark-mode: #3E5879;
+$primary-color-dark: #D8C4B6;
+$secondary-color-dark: #89BCD9;
+
+// Standardfarben 
+$background-color: $background-color-light;
+$text-color: $text-color-light;
+$text-color-dark: $text-color-dark-light;
+$primary-color: $primary-color-light;
+$secondary-color: $secondary-color-light;
+
+// Light Mode (Standardwerte)
 :root {
-    --background-color: #F8F9FA;
-    --text-color: #2A3647;
-    --text-color-dark: #5A6978;
-    --primary-color: #2A3647;
-    /* Dark Blue für Light Mode */
+    --background-color: #F1F0E9;
+    --text-color: #9AA6B2;
+    --text-color-dark: #BCCCDC;
+    --primary-color: #D9EAFD;
     --secondary-color: #4589FF;
-    /* Akzentfarbe */
 }
 
-// Dark Mode
+// Dark Mode – wird dynamisch per Klasse `.dark-mode` umgeschaltet
 .dark-mode {
-    --background-color: #262E34;
-    --text-color: #F8F5EC;
-    --text-color-dark: #89BCD9;
-    --primary-color: #F8F5EC;
-    /* Hell für Dark Mode */
+    --background-color: #213555;
+    --text-color: #F5EFE7;
+    --text-color-dark: #3E5879;
+    --primary-color: #D8C4B6;
     --secondary-color: #89BCD9;
-    /* Softer Blue */
 }
