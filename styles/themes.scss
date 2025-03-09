@@ -1,0 +1,21 @@
+// Light Mode
+:root {
+    --background-color: #F8F9FA;
+    --text-color: #2A3647;
+    --text-color-dark: #5A6978;
+    --primary-color: #2A3647;
+    /* Dark Blue für Light Mode */
+    --secondary-color: #4589FF;
+    /* Akzentfarbe */
+}
+
+// Dark Mode
+.dark-mode {
+    --background-color: #262E34;
+    --text-color: #F8F5EC;
+    --text-color-dark: #89BCD9;
+    --primary-color: #F8F5EC;
+    /* Hell für Dark Mode */
+    --secondary-color: #89BCD9;
+    /* Softer Blue */
+}

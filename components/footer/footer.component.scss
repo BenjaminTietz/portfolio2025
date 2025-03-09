@@ -1,0 +1,6 @@
+@use '../../styles/mixins.scss' as mixins;
+
+
+.wrapper {
+    @include mixins.dFlex(row, space-between, center);
+}
